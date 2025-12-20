@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Homepage from '$lib/component/Homepage.svelte';
+    // import Homepage from '$lib/component/kancilnoning/Homepage.svelte';
 </script>
 
 <main>
-    <Homepage />
+    <!-- <Homepage/> -->
 </main>
