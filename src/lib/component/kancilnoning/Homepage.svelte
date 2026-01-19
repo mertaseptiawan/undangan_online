@@ -21,7 +21,7 @@
     let showContent = false;
 
     //countdown
-    const targetDate= "2026-01-02T14:00:00";
+    const targetDate= "2026-01-10T14:00:00";
     const countdownStore = createCountdown(targetDate);
     const format = (n: number) => n.toString().padStart(2, '0');
     
@@ -105,17 +105,17 @@
 
     <main id="main-content" class="mt-0 overflow-hidden w-full">
         <div transition:fade>
-            
+
             <section class="relative h-screen flex items-center justify-center text-center text-white">
                 <div class="absolute inset-0 bg-black/40 z-10"></div>
                 <img src="/image/cover.jpeg" class="absolute inset-0 w-full h-full object-cover" alt="Couple Banner">
                 <div use:reveal={{ direction: 'bottom', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="relative z-20 px-4 flex flex-col space-y-60 items-center">
-                    <div>
+                    <div style="font-family: 'Playwrite NZ', cursive;">
                         <p class="uppercase tracking-[0.3em] mb-4">The Wedding Of</p>
                         <h1 class="font-serif-elegant text-3xl md:text-9xl mb-4">Kancil & Noning</h1>
                     </div>
-                    
-                    <p class="text-lg italic font-light">"Menjalin cinta dalam ikatan suci pernikahan"</p>
+
+                    <p style="font-family: 'Edu VIC WA NT Hand Precursive', cursive;" class="text-lg italic font-light">"Menjalin cinta dalam ikatan suci pernikahan"</p>
                 </div>
             </section>
 
@@ -128,13 +128,17 @@
                         </div>
                         <div use:reveal={{ direction: 'left', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="text-center">
                             <h3 class="text-3xl font-semibold">Kancil</h3>
-                            <p class="text-gray-500 mt-2 italic">I Gusti Ngurah Darma Adi Winata</p>
-                            <p class="text-gray-500 mt-2 text-sm italic">Putra dari I Gusti Nyoman Putra dan Jero Citrawati</p>
-                            <p class="text-gray-500 mt-2 text-sm italic">Banjar sengguan ,lingkungan semarapura kangin klk</p>
+                            <p class="text-gray-500 mt-2 italic">I Gst. Ngurah Darma Adi Winata</p>
+                            
+                            <p class="text-gray-500 mt-2 text-sm italic">Putra dari pasangan</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">I Gusti Nyoman Putra</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">&</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">Jero Citrawati</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">Banjar Sengguan, Lingkungan Semarapura Kangin - Klungkung</p>
                         </div>
                         
                     </div>
-                    <h2 use:reveal={{ direction: 'bottom', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="font-serif-elegant text-5xl text-amber-700">&</h2>
+                    <h2 style="font-family: 'Ole'" use:reveal={{ direction: 'bottom', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="font-serif-elegant text-5xl text-amber-700">&</h2>
                     <div class="flex flex-col items-center">
                         <div use:reveal={{ direction: 'right', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="w-64 h-80 p-2 border-4 border-amber-200 rounded-full overflow-hidden shadow-xl mb-6">
                             <img src="/image/bridge.jpeg" class="w-full h-full object-cover rounded-full" alt="Bride">
@@ -142,8 +146,12 @@
                         <div use:reveal={{ direction: 'right', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="text-center">
                             <h3 class="text-3xl font-semibold">Noning</h3>
                             <p class="text-gray-500 mt-2 italic">Ni Putu Rini Oktaviyanti</p>
-                            <p class="text-gray-500 mt-2 text-sm italic">Putri dari I Made Budiantara dan Ni Putu Sari</p>
-                            <p class="text-gray-500 mt-2 text-sm italic">Banjar dinas pande , nongan kecamatan rendang karangasem</p>
+
+                            <p class="text-gray-500 mt-2 text-sm italic">Putri dari pasangan</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">I Made Budiantara</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">&</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">Ni Putu Sari</p>
+                            <p class="text-gray-500 mt-2 text-sm italic">Banjar Dinas Pande, Desa. Nongan, Kecamatan Rendang - Karangasem</p>
                         </div>
                         
                     </div>
@@ -198,7 +206,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </div>
-                        <p use:reveal={{ direction: 'bottom', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="md:text-2xl font-light tracking-wide">Hari/Tanggal : <br> Jumat, 02 Januari 2026</p>
+                        <p use:reveal={{ direction: 'bottom', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="md:text-2xl font-light tracking-wide">Hari/Tanggal : <br> Sabtu, 10 Januari 2026</p>
 
                         <button 
                             on:click={addToCalendar}
@@ -233,7 +241,7 @@
                     </div>
 
                     <a 
-                        href="https://maps.app.goo.gl/KFvzLsCcUBm3iLKJA" 
+                        href="https://maps.app.goo.gl/eefs2ttTe9hhGKEEA" 
                         target="_blank" 
                         class="inline-block bg-amber-700 text-white px-6 py-4 rounded-xl font-semibold hover:bg-black transition-all duration-300 shadow-xl"
                     >
@@ -385,7 +393,7 @@
                     </div> -->
 
                     <div class="text-xs text-white/30 tracking-tighter text-center">
-                        &copy; {currentYear} Created with ❤️ for Our Special Day.
+                        &copy; {currentYear} Created with ❤️ for Your Special Day.
                     </div>
                 </div>
             </footer>
