@@ -3,6 +3,7 @@
 	import MusicControl from '$lib/component/MusicControl.svelte';
 	import Cover from '$lib/component/invitation/Cover.svelte';
 	import Hero from '$lib/component/invitation/Hero.svelte';
+	import OpeningQuote from '$lib/component/invitation/OpeningQuote.svelte';
 	import Countdown from '$lib/component/invitation/Countdown.svelte';
 	import Couple from '$lib/component/invitation/Couple.svelte';
 	import EventDetails from '$lib/component/invitation/EventDetails.svelte';
@@ -147,6 +148,8 @@
 				<!-- Countdown inside Hero for Bali Theme -->
 				<Countdown {targetDate} theme={theme.countdown} />
 			</Hero>
+
+			<OpeningQuote />
 
 			<section class="relative py-20">
 				<!-- Background decoration -->
