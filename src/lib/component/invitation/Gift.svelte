@@ -57,7 +57,7 @@
 			{subTitle}
 		</p>
 
-		<div class="grid justify-center gap-6 md:grid-cols-2">
+		<div class="grid justify-center">
 			{#each bankAccounts as account, i}
 				<div
 					use:reveal={{ delay: 300 + i * 100 }}

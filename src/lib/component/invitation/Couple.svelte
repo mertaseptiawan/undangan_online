@@ -62,10 +62,22 @@
 				<h3 class="font-serif text-3xl font-semibold {finalTheme.nameColor}">{groom.name}</h3>
 				<p class="mt-2 italic {finalTheme.textColor}">{groom.fullName}</p>
 
-				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">Son of</p>
-				{#each groom.parents as parent}
-					<p class="text-sm italic {finalTheme.textColor}">{parent}</p>
-				{/each}
+				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">Putra dari</p>
+				
+				<div class="flex flex-col items-center">
+					{#each groom.parents as parent, i}
+						<p class="text-sm italic {finalTheme.textColor}">
+							{parent}
+						</p>
+						
+						{#if i < groom.parents.length - 1}
+							<span class="text-xs my-0.5 font-serif italic {finalTheme.dividerColor || 'text-[#d4af37]'}">
+								&
+							</span>
+						{/if}
+					{/each}
+				</div>
+
 				{#if groom.address}
 					<p class="mt-2 text-sm italic {finalTheme.textColor}">{groom.address}</p>
 				{/if}
@@ -94,10 +106,22 @@
 				<h3 class="font-serif text-3xl font-semibold {finalTheme.nameColor}">{bride.name}</h3>
 				<p class="mt-2 italic {finalTheme.textColor}">{bride.fullName}</p>
 
-				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">Daughter of</p>
-				{#each bride.parents as parent}
-					<p class="text-sm italic {finalTheme.textColor}">{parent}</p>
-				{/each}
+				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">Putri dari</p>
+				
+				<div class="flex flex-col items-center">
+					{#each bride.parents as parent, i}
+						<p class="text-sm italic {finalTheme.textColor}">
+							{parent}
+						</p>
+						
+						{#if i < bride.parents.length - 1}
+							<span class="text-xs my-0.5 font-serif italic {finalTheme.dividerColor || 'text-[#d4af37]'}">
+								&
+							</span>
+						{/if}
+					{/each}
+				</div>
+
 				{#if bride.address}
 					<p class="mt-2 text-sm italic {finalTheme.textColor}">{bride.address}</p>
 				{/if}
