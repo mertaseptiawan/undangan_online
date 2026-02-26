@@ -21,7 +21,7 @@
     let showContent = false;
 
     //countdown
-    const targetDate= "2026-01-02T14:00:00";
+    const targetDate= "2026-01-10T14:00:00";
     const countdownStore = createCountdown(targetDate);
     const format = (n: number) => n.toString().padStart(2, '0');
     
@@ -105,11 +105,11 @@
 
     <main id="main-content" class="mt-0 overflow-hidden w-full">
         <div transition:fade>
-            
             <section class="relative h-screen flex items-center justify-center text-center text-white">
                 <div class="absolute inset-0 bg-black/40 z-10"></div>
                 <img src="/image/cover.jpeg" class="absolute inset-0 w-full h-full object-cover" alt="Couple Banner">
                 <div use:reveal={{ direction: 'bottom', scale: 1, distance: "50px", delay: 0, duration: 1000 }} class="relative z-20 px-4 flex flex-col space-y-60 items-center">
+
                     <div>
                         <p class="uppercase tracking-[0.3em] mb-4">The Wedding Of</p>
                         <h1 class="font-serif-elegant text-3xl md:text-9xl mb-4">Kancil & Noning</h1>
