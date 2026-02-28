@@ -20,17 +20,17 @@
 	const targetDate = '2026-12-12T16:00:00';
 
 	const groom = {
-		name: 'James',
-		fullName: 'James Alexander',
-		photo:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop',
-		parents: ['Mr. Robert Alexander', 'Mrs. Mary Alexander'],
+		name: 'Galih',
+		fullName: 'Galih Pratama',
+		photo:'/image/modern/18.png',
+		parents: ['Mr. Robert Pratama', 'Mrs. Mary Pratama'],
 		address: 'Jalan Bypass Ngurah Rai No. 90, Kesiman Kertalangu, Kecamatan Denpasar Timur, Kota Denpasar, Bali'
 	};
 
 	const bride = {
-		name: 'Kara',
-		fullName: 'Kara Danvers',
-		photo:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit-crop',
+		name: 'Ratna',
+		fullName: 'Ratna Danvers',
+		photo:'/image/modern/19.png',
 		parents: ['Mr. Jeremiah Danvers', 'Mrs. Eliza Danvers'],
 		address: 'Jalan Bypass Ngurah Rai No. 90, Kesiman Kertalangu, Kecamatan Denpasar Timur, Kota Denpasar, Bali'
 	};
@@ -47,14 +47,9 @@
 		},
 	];
 
-	const galleryImages = [
-		'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop',
-		'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop',
-		'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=1000&auto=format&fit=crop',
-		'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1000&auto=format&fit=crop',
-		'https://images.unsplash.com/photo-1529636798458-92182e662485?q=80&w=1000&auto=format&fit=crop',
-		'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=1000&auto=format&fit=crop'
-	];
+	const modules = import.meta.glob('/static/image/modern/gallery/*.{jpg,jpeg,png,webp}', { eager: true });
+
+	const galleryImages = Object.keys(modules).map((path) => path.replace('/static', ''));
 
 	const bankAccounts = [
 		{
@@ -130,8 +125,8 @@
 
 {#if !showContent}
 	<Cover
-        coupleNames="James & Kara"
-        imageUrl="https://images.unsplash.com/photo-1494859632785-32abaf5241f4?q=80&w=2000&auto=format&fit=crop"
+        coupleNames="Galih & Ratna"
+        imageUrl="/image/modern/5.png"
         onOpen={openCover}
         theme={theme.cover}
     />
@@ -144,9 +139,9 @@
 				style="background-image: url('pattern-floral.png');"></div>
 
 			<Hero
-				coupleNames="Aria & Julian"
+				coupleNames="Galih & Ratna"
 				date="12 . 12 . 2026"
-				imageUrl="https://images.unsplash.com/photo-1494859632785-32abaf5241f4?q=80&w=2000&auto=format&fit=crop"
+				imageUrl="/image/modern/2.png"
 				theme={theme.hero}
 			/>
 

@@ -58,13 +58,13 @@
                         <p class="text-sm font-medium uppercase tracking-widest opacity-80 {finalTheme.textColor}">Hari/Tanggal :</p>
                         <p class="mt-1 text-xl font-semibold {finalTheme.textColor}">{event.date}</p>
                         
-                        <a 
+                        <!-- <a 
                             href={event.calendarUrl || '#'} 
                             class="mt-6 flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#5d2e17] transition-transform hover:scale-105 shadow-md"
                         >
                             <span class="material-icons-outlined text-lg">calendar_today</span>
                             Simpan ke google calendar
-                        </a>
+                        </a> -->
                     </div>
 
                     <div class="flex flex-col items-center">

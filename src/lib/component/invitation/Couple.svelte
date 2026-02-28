@@ -71,7 +71,7 @@
 						</p>
 						
 						{#if i < groom.parents.length - 1}
-							<span class="text-xs my-0.5 font-serif italic {finalTheme.dividerColor || 'text-[#d4af37]'}">
+							<span class="text-xl my-0.5 font-serif italic {finalTheme.dividerColor || 'text-[#d4af37]'}">
 								&
 							</span>
 						{/if}
@@ -115,7 +115,7 @@
 						</p>
 						
 						{#if i < bride.parents.length - 1}
-							<span class="text-xs my-0.5 font-serif italic {finalTheme.dividerColor || 'text-[#d4af37]'}">
+							<span class="text-xl my-0.5 font-serif italic {finalTheme.dividerColor || 'text-[#d4af37]'}">
 								&
 							</span>
 						{/if}
