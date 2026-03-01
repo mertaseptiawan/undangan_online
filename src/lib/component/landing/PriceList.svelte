@@ -74,7 +74,7 @@
 	];
 
 	const designs: Design[] = [
-        { id: 'Elegance', name: 'ELegance', image: '/image/cover.jpeg' },
+        { id: 'Elegant', name: 'Elegant', image: '/image/elegant/cover.jpeg' },
         { id: 'Artistic', name: 'Artistic', image: '/image/artistic/2.png' },
         { id: 'Modern', name: 'Modern', image: '/image/modern/2.png' },
     ];

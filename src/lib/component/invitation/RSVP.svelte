@@ -6,6 +6,7 @@
 
 	interface Props {
 		title?: string;
+		designId: string;
 		theme?: {
 			sectionTitleColor?: string;
 			cardBg?: string;
@@ -17,7 +18,7 @@
 		};
 	}
 
-	let { title = 'Guest Book', theme = {} }: Props = $props();
+	let { title = 'Guest Book', designId, theme = {} }: Props = $props();
 
 	const defaultTheme = {
 		sectionTitleColor: 'text-rose-900',
@@ -40,10 +41,13 @@
 	const pagination = createPagination([], 5);
 	const { paginatedItems, currentPage, totalPages } = pagination;
 
+	// src/lib/component/invitation/RSVP.svelte
+
 	async function fetchMessages() {
 		const { data, error } = await supabase
 			.from('guestbook')
 			.select('*')
+			.eq('design_id', designId) // Ini wajib agar tidak campur aduk
 			.order('created_at', { ascending: false });
 
 		if (!error) {
@@ -52,19 +56,23 @@
 	}
 
 	async function handleSubmit() {
-		if (!newName || !newMessage || !newStatus) return alert('Please fill all fields!');
+		if (!newName || !newMessage || !newStatus) return alert('Lengkapi semua data!');
 
 		loading = true;
 		const { error } = await supabase
 			.from('guestbook')
-			.insert([{ name: newName, status: newStatus, message: newMessage }]);
+			.insert([{ 
+				name: newName, 
+				status: newStatus, 
+				message: newMessage,
+				design_id: designId // Ini wajib agar tersimpan di kolom yang tepat
+			}]);
 
 		if (error) {
-			alert('Failed to send message: ' + error.message);
+			alert('Gagal: ' + error.message);
 		} else {
-			newName = '';
-			newStatus = '';
-			newMessage = '';
+			// Reset form dan refresh data
+			newName = ''; newStatus = ''; newMessage = '';
 			await fetchMessages();
 		}
 		loading = false;

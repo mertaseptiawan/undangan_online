@@ -44,10 +44,8 @@
     let isOpening = $state(false);
 
     function handleOpen() {
+        onOpen();
         isOpening = true;
-        setTimeout(() => {
-            onOpen();
-        }, 1000);
     }
 </script>
 

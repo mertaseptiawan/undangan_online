@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import MusicControl from '$lib/component/MusicControl.svelte';
 	import Cover from '$lib/component/invitation/Cover.svelte';
 	import Hero from '$lib/component/invitation/Hero.svelte';
 	import Countdown from '$lib/component/invitation/Countdown.svelte';
@@ -10,29 +9,67 @@
 	import RSVP from '$lib/component/invitation/RSVP.svelte';
 	import Gift from '$lib/component/invitation/Gift.svelte';
 	import Footer from '$lib/component/invitation/Footer.svelte';
+	import { onMount } from 'svelte';
+    import { isPlaying, audioStore } from '$lib/musicStore';
+	import MusicControl from '$lib/component/MusicControl.svelte';
 
-	let showContent = false;
+    let showContent = $state(false);
+    let audioElem: HTMLAudioElement | undefined = $state();
 
-	function openCover() {
-		showContent = true;
-	}
+    const myMusic = "/music/i_choose_you.mp3";
+
+    onMount(() => {
+        if (audioElem) {
+            // Daftarkan audioElem ke store agar MusicControl bisa akses
+            audioStore.set(audioElem);
+            audioElem.volume = 0.5;
+        }
+    });
+
+    // DI DALAM +PAGE.SVELTE
+	async function openCover() {
+        const audio = document.getElementById('weddingAudio') as HTMLAudioElement;
+        
+        if (audio) {
+            try {
+                // 1. Set Volume dan pastikan audio siap
+                audio.volume = 0.5;
+                
+                // 2. Perintah PLAY harus yang pertama kali dijalankan
+                await audio.play();
+                
+                // 3. Jika berhasil play, baru update state global
+                $isPlaying = true;
+                audioStore.set(audio);
+                
+                // 4. Terakhir, buka konten (transisi cover)
+                showContent = true;
+            } catch (err) {
+                console.error("Autoplay gagal, membuka cover tanpa musik:", err);
+                // Jika gagal (misal kebijakan browser), tetap buka cover agar tamu tidak stuck
+                showContent = true; 
+            }
+        } else {
+            showContent = true;
+        }
+    }
 
 	const targetDate = '2026-12-12T16:00:00';
 
 	const groom = {
-		name: 'Galih',
-		fullName: 'Galih Pratama',
+		name: 'Steven',
+		fullName: 'Steven Johnson',
 		photo:'/image/modern/18.png',
-		parents: ['Mr. Robert Pratama', 'Mrs. Mary Pratama'],
-		address: 'Jalan Bypass Ngurah Rai No. 90, Kesiman Kertalangu, Kecamatan Denpasar Timur, Kota Denpasar, Bali'
+		parents: ['Mr. Robert Johnson', 'Mrs. Mary Johnson'],
+		address: 'Casterton, Victoria 3311, Australia'
 	};
 
 	const bride = {
-		name: 'Ratna',
-		fullName: 'Ratna Danvers',
+		name: 'Susan',
+		fullName: 'Susan Estelle',
 		photo:'/image/modern/19.png',
-		parents: ['Mr. Jeremiah Danvers', 'Mrs. Eliza Danvers'],
-		address: 'Jalan Bypass Ngurah Rai No. 90, Kesiman Kertalangu, Kecamatan Denpasar Timur, Kota Denpasar, Bali'
+		parents: ['Mr. Jeremiah Estelle', 'Mrs. Eliza Estelle'],
+		address: 'Queensland 4310, Australia'
 	};
 
 	const events = [
@@ -40,9 +77,9 @@
 			name: 'Resepsi Pernikahan',
 			date: 'Sabtu, 12 Desember 2026',
 			time: '14.00 - Selesai',
-			locationName: 'Banjar Adat Sengguan',
-			address: 'Singapadu, Kec. Sukawati, Kabupaten Gianyar, Bali',
-			mapUrl: 'https://maps.google.com/?q=Banjar+Adat+Sengguan',
+			locationName: 'Karma Kandara, Unggasan',
+			address: 'Jl. Pantai Karma Kandara, Unggasan, Kec. Kuta Sel., Kabupaten Badung, Bali 80361',
+			mapUrl: 'https://maps.app.goo.gl/dU9wzM8gJFU7wW8o9',
 			calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Aria+&+Julian&dates=20260110T140000Z/20260110T180000Z'
 		},
 	];
@@ -123,15 +160,23 @@
 	};
 </script>
 
+<audio 
+    id="weddingAudio" 
+    bind:this={audioElem}
+    src={myMusic} 
+    loop 
+    preload="auto"
+></audio>
+
 {#if !showContent}
-	<Cover
-        coupleNames="Galih & Ratna"
-        imageUrl="/image/modern/5.png"
-        onOpen={openCover}
-        theme={theme.cover}
+    <Cover 
+        onOpen={openCover} 
+        coupleNames="Steven & Susan" 
+        imageUrl="/image/modern/5.png" 
+		theme={theme.cover}
     />
 {:else}
-	<MusicControl />
+    <MusicControl />
 
 	<main class="min-h-screen w-full overflow-hidden bg-[#fdfbf8] font-serif">
 		<div transition:fade>
@@ -139,7 +184,7 @@
 				style="background-image: url('pattern-floral.png');"></div>
 
 			<Hero
-				coupleNames="Galih & Ratna"
+				coupleNames="Steven & Susan"
 				date="12 . 12 . 2026"
 				imageUrl="/image/modern/2.png"
 				theme={theme.hero}
@@ -163,7 +208,10 @@
 
 			<Gallery images={galleryImages} />
 
-			<RSVP theme={theme.rsvp} />
+			<RSVP 
+				designId="modern" 
+				theme={theme.rsvp} 
+			/>
 
 			<Gift {bankAccounts} theme={theme.gift} />
 

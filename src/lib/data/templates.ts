@@ -8,11 +8,11 @@ export interface Template {
 
 export const templates: Template[] = [
     {
-        id: 'kancilnoning',
+        id: 'elegant',
         title: 'Elegant Cultural',
         // description: 'A beautiful blend of tradition and modern elegance, perfect for cultural weddings.',
-        thumbnail: '/image/cover.jpeg', // Using existing image as placeholder
-        route: '/kancilnoning/?to=nama tamu'
+        thumbnail: '/image/elegant/cover.jpeg', // Using existing image as placeholder
+        route: '/design/elegant/?to=nama tamu'
     },
     {
         id: 'Artistic',
@@ -22,7 +22,7 @@ export const templates: Template[] = [
         route: '/design/artistic/?to=nama tamu'
     },
     {
-        id: 'minimalist',
+        id: 'modern',
         title: 'Modern Minimalist',
         // description: 'Sleek and contemporary design for modern couples.',
         thumbnail: '/image/modern/2.png',
