@@ -30,7 +30,7 @@
 		buttonShape: 'rounded-lg'
 	};
 
-	const finalTheme = { ...defaultTheme, ...theme };
+	const finalTheme = $derived({ ...defaultTheme, ...theme });
 
 	let newName = $state('');
 	let newStatus = $state('');
@@ -121,7 +121,7 @@
 			</button>
 		</form>
 
-		<div class="custom-scrollbar max-h-[500px] space-y-6 overflow-y-auto pr-2">
+		<div class="custom-scrollbar max-h-125 space-y-6 overflow-y-auto pr-2">
 			{#each $paginatedItems as guest (guest.id || guest.created_at)}
 				<div class="border-b border-gray-100 pb-4 last:border-0" transition:fade>
 					<div class="mb-1 flex items-start justify-between">

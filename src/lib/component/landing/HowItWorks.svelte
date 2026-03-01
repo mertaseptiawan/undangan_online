@@ -27,7 +27,7 @@
 		<div class="relative grid gap-12 md:grid-cols-3">
 			<!-- Connector Line -->
 			<div
-				class="absolute top-12 right-[16%] left-[16%] hidden h-px bg-gradient-to-r from-transparent via-white/20 to-transparent md:block"
+				class="absolute top-12 right-[16%] left-[16%] hidden h-px bg-linear-to-r from-transparent via-white/20 to-transparent md:block"
 			></div>
 
 			<!-- Step 1 -->

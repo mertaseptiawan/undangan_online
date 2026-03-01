@@ -68,9 +68,9 @@
 						>
 							{template.title}
 						</h3>
-						<p class="mb-6 flex-1 text-sm leading-relaxed text-gray-500">
+						<!-- <p class="mb-6 flex-1 text-sm leading-relaxed text-gray-500">
 							{template.description}
-						</p>
+						</p> -->
 
 						<span
 							class="w-fit rounded border border-amber-200 px-3 py-1 text-xs font-bold tracking-widest text-amber-600 uppercase"

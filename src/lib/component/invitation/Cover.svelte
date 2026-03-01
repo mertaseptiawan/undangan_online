@@ -40,7 +40,7 @@
         buttonColor: 'bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/50',
     };
 
-    const finalTheme = { ...defaultTheme, ...theme };
+    const finalTheme = $derived({ ...defaultTheme, ...theme });
     let isOpening = $state(false);
 
     function handleOpen() {
@@ -52,7 +52,7 @@
 {#if !isOpening}
 <div
     out:fly={{ y: -100, duration: 1000 }}
-    class="fixed inset-0 z-[70] flex flex-col items-center justify-center overflow-hidden"
+    class="fixed inset-0 z-70 flex flex-col items-center justify-center overflow-hidden"
 >
     <div class="absolute inset-0 z-0">
         <img 

@@ -14,7 +14,7 @@
 	<div class="relative z-20 mx-auto flex max-w-4xl flex-col items-center px-4">
 		<h1
 			use:reveal={{ direction: 'bottom', distance: '30px', duration: 1000 }}
-			class="font-serif-elegant mb-6 bg-gradient-to-r from-amber-200 to-amber-500 bg-clip-text text-4xl text-transparent md:text-7xl"
+			class="font-serif-elegant mb-6 bg-linear-to-r from-amber-200 to-amber-500 bg-clip-text text-4xl text-transparent md:text-7xl"
 		>
 			Create Your Perfect Digital Invitation
 		</h1>

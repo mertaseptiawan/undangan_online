@@ -49,18 +49,15 @@
 				</ul>
 			</div>
 
-			<div class="col-span-1">
+			<!-- <div class="col-span-1">
 				<h4 class="mb-6 font-semibold text-gray-900">Example</h4>
 				<ul class="space-y-4 text-sm text-gray-500">
 					<li>
 						<a href="/kancilnoning" class="transition-colors hover:text-amber-700">Balinese Style</a
 						>
 					</li>
-					<li>
-						<a href="/design/floral" class="transition-colors hover:text-amber-700">Floral Style</a>
-					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 
 		<div

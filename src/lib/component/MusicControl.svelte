@@ -20,7 +20,7 @@
 <button 
     type="button"
     onclick={toggleMusic}
-    class="fixed bottom-6 right-6 z-[90] flex h-12 w-12 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-md transition-all hover:scale-110 active:scale-95"
+    class="fixed bottom-6 right-6 z-90 flex h-12 w-12 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-md transition-all hover:scale-110 active:scale-95"
     class:animate-spin-slow={$isPlaying}
 >
     {#if $isPlaying}
