@@ -208,15 +208,14 @@
         >
             <div class="mb-8 flex items-center justify-between border-b border-gray-100 pb-6">
                 <div>
-                    <h3 class="text-3xl font-serif text-gray-900">Pilih Desain</h3>
-                    <p class="text-amber-700">Untuk {selectedPackage.name} • {selectedPackage.price}</p>
+                    <h3 class="text-3xl font-serif text-gray-900">Choose Design</h3>
+                    <p class="text-amber-700">{selectedPackage.name} • {selectedPackage.price}</p>
                 </div>
                 <button 
 					type="button"
-					{onclick}
-					class="group relative rounded-full bg-gray-50 p-3 text-gray-400 transition-all duration-200 hover:bg-red-50 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-					aria-label="Tutup panel pilihan"
-					title="Tutup"
+					onclick={closePicker} class="group relative rounded-full bg-gray-50 p-3 text-gray-400 transition-all duration-200 hover:bg-red-50 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+					aria-label="Clode Design Picker"
+					title="Close"
 				>
 					<svg 
 						class="h-6 w-6" 
@@ -234,7 +233,7 @@
 					</svg>
 
 					<span class="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-						Tutup
+						Close
 					</span>
 				</button>
             </div>
