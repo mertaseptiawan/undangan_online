@@ -14,7 +14,7 @@
 		textColor: 'text-rose-100'
 	};
 
-	const finalTheme = { ...defaultTheme, ...theme };
+	const finalTheme = $derived({ ...defaultTheme, ...theme });
 </script>
 
 <footer class="{finalTheme.bgColor} py-10 text-center {finalTheme.textColor}">

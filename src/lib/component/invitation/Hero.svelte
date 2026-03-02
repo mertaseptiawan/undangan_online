@@ -20,7 +20,7 @@
 		dateColor: 'text-gray-700'
 	};
 
-	const finalTheme = { ...defaultTheme, ...theme };
+	const finalTheme = $derived({ ...defaultTheme, ...theme });
 </script>
 
 <section class="relative flex h-screen items-center justify-center overflow-hidden text-center">
@@ -44,9 +44,9 @@
 		</h1>
 
 		<div class="mb-10 flex items-center gap-4 text-white/90">
-			<div class="h-[1px] w-12 bg-white/60"></div>
+			<div class="h-1px w-12 bg-white/60"></div>
 			<p class="text-lg font-light tracking-wide italic md:text-2xl">{date}</p>
-			<div class="h-[1px] w-12 bg-white/60"></div>
+			<div class="h-1px w-12 bg-white/60"></div>
 		</div>
 
 		<!-- Render children (Countdown) if provided -->

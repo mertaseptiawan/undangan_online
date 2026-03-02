@@ -13,21 +13,6 @@
 					Creating beautiful digital experiences for your most special moments. Simple, elegant, and
 					forever.
 				</p>
-				<div class="flex gap-4">
-					<!-- Social placeholders -->
-					<a
-						href="#"
-						class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-400 shadow-sm transition-all hover:text-amber-600 hover:shadow-md"
-					>
-						IG
-					</a>
-					<a
-						href="#"
-						class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-400 shadow-sm transition-all hover:text-amber-600 hover:shadow-md"
-					>
-						FB
-					</a>
-				</div>
 			</div>
 
 			<div class="col-span-1">
@@ -39,25 +24,6 @@
 				</ul>
 			</div>
 
-			<div class="col-span-1">
-				<h4 class="mb-6 font-semibold text-gray-900">Company</h4>
-				<ul class="space-y-4 text-sm text-gray-500">
-					<li><a href="#" class="transition-colors hover:text-amber-700">About Us</a></li>
-					<li><a href="#" class="transition-colors hover:text-amber-700">Contact</a></li>
-					<li><a href="#" class="transition-colors hover:text-amber-700">Privacy Policy</a></li>
-					<li><a href="#" class="transition-colors hover:text-amber-700">Terms of Service</a></li>
-				</ul>
-			</div>
-
-			<!-- <div class="col-span-1">
-				<h4 class="mb-6 font-semibold text-gray-900">Example</h4>
-				<ul class="space-y-4 text-sm text-gray-500">
-					<li>
-						<a href="/kancilnoning" class="transition-colors hover:text-amber-700">Balinese Style</a
-						>
-					</li>
-				</ul>
-			</div> -->
 		</div>
 
 		<div

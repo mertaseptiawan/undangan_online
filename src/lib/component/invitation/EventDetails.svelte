@@ -36,7 +36,7 @@
         accentColor: 'bg-[#b34b00]' // Warna orange gelap seperti di gambar
     };
 
-    const finalTheme = { ...defaultTheme, ...theme };
+    const finalTheme = $derived({ ...defaultTheme, ...theme });
 </script>
 
 <section class="mx-auto max-w-2xl px-4 py-24 text-center">

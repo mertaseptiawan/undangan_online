@@ -39,7 +39,7 @@
 		buttonShape: 'rounded-full'
 	};
 
-	const finalTheme = { ...defaultTheme, ...theme };
+	const finalTheme = $derived({ ...defaultTheme, ...theme });
 
 	function copyToClipboard(text: string) {
 		navigator.clipboard.writeText(text);

@@ -36,7 +36,7 @@
 		frameShape: 'rounded-full'
 	};
 
-	const finalTheme = { ...defaultTheme, ...theme };
+	const finalTheme = $derived({ ...defaultTheme, ...theme });
 </script>
 
 <section class="mx-auto max-w-6xl px-4 py-20 text-center">

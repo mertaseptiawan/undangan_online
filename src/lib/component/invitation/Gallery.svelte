@@ -18,7 +18,7 @@
 		imageShape: 'rounded-lg' // Default shape
 	};
 
-	const finalTheme = { ...defaultTheme, ...theme };
+	const finalTheme = $derived({ ...defaultTheme, ...theme });
 
 	let isModalOpen = $state(false);
 	let activeIndex = $state(0);

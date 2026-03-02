@@ -45,22 +45,22 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-4">
             <div>
-                <label class="label-text">Foto Cover</label>
-                <input type="file" name="cover_img" accept="image/*">
+                <label for="cover_img" class="label-text">Foto Cover</label>
+                <input id="cover_img" type="file" name="cover_img" accept="image/*" class="w-full">
             </div>
             <div>
-                <label class="label-text">Foto Banner</label>
-                <input type="file" name="banner_img" accept="image/*">
+                <label for="banner_img" class="label-text">Foto Banner</label>
+                <input id="banner_img" type="file" name="banner_img" accept="image/*" class="w-full">
             </div>
             <div class="md:col-span-2">
-                <label class="label-text">Gallery Foto (Bisa pilih banyak sekaligus)</label>
-                <input type="file" name="gallery" accept="image/*" multiple class="w-full">
+                <label for="gallery" class="label-text">Gallery Foto (Bisa pilih banyak sekaligus)</label>
+                <input id="gallery" type="file" name="gallery" accept="image/*" multiple class="w-full">
             </div>
         </div>
 
         <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
-            <label class="block font-bold text-amber-800">Upload Bukti Transfer</label>
-            <input type="file" name="payment_proof" accept="image/*" required>
+            <label for="payment_proof" class="block font-bold text-amber-800 mb-1">Upload Bukti Transfer</label>
+            <input id="payment_proof" type="file" name="payment_proof" accept="image/*" required class="w-full">
         </div>
 
         <button type="submit" class="w-full bg-indigo-600 py-4 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all">

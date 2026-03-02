@@ -31,7 +31,6 @@
 	};
 
 	const finalTheme = $derived({ ...defaultTheme, ...theme });
-
 	let newName = $state('');
 	let newStatus = $state('');
 	let newMessage = $state('');
