@@ -8,22 +8,22 @@ export interface Template {
 
 export const templates: Template[] = [
     {
-        id: 'elegant',
-        title: 'Elegant Cultural',
+        id: 'casual',
+        title: 'Casual Breeze',
         // description: 'A beautiful blend of tradition and modern elegance, perfect for cultural weddings.',
         thumbnail: '/image/elegant/cover.jpeg', // Using existing image as placeholder
         route: '/design/elegant/?to=nama tamu'
     },
     {
-        id: 'Artistic',
-        title: 'Artistic',
+        id: 'ethnic',
+        title: 'Ethnic Elegance',
         // description: 'Clean, minimalist design with soft floral accents for a romantic touch.',
         thumbnail: '/image/artistic/2.png',
         route: '/design/artistic/?to=nama tamu'
     },
     {
-        id: 'modern',
-        title: 'Modern Minimalist',
+        id: 'european',
+        title: 'European Vintage',
         // description: 'Sleek and contemporary design for modern couples.',
         thumbnail: '/image/modern/2.png',
         route: '/design/modern/?to=nama tamu'
