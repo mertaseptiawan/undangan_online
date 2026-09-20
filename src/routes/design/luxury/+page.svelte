@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { isPlaying, audioStore } from '$lib/musicStore';
 	import MusicControl from '$lib/component/MusicControl.svelte';
 	import Cover from '$lib/component/invitation/Cover.svelte';
 	import Hero from '$lib/component/invitation/Hero.svelte';
@@ -11,9 +13,29 @@
 	import Gift from '$lib/component/invitation/Gift.svelte';
 	import Footer from '$lib/component/invitation/Footer.svelte';
 
-	let showContent = false;
+	let showContent = $state(false);
+	let audioElem: HTMLAudioElement | undefined = $state();
+	const myMusic = '/music/beautiful_in_white.mp3';
 
-	function openCover() {
+	onMount(() => {
+		if (audioElem) {
+			audioStore.set(audioElem);
+			audioElem.volume = 0.5;
+		}
+	});
+
+	async function openCover() {
+		const audio = document.getElementById('weddingAudio') as HTMLAudioElement;
+		if (audio) {
+			try {
+				audio.volume = 0.5;
+				await audio.play();
+				$isPlaying = true;
+				audioStore.set(audio);
+			} catch (err) {
+				console.error('Autoplay blocked:', err);
+			}
+		}
 		showContent = true;
 	}
 
@@ -115,6 +137,8 @@
 		}
 	};
 </script>
+ 
+<audio id="weddingAudio" bind:this={audioElem} src={myMusic} loop preload="auto"></audio>
 
 {#if !showContent}
 	<Cover

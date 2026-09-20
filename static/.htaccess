@@ -1,28 +1,42 @@
 <IfModule mod_headers.c>
-    # Beri izin semua orang untuk membaca file audio
-    <FilesMatch "\.(mp3|mp4|ogg|wav)$">
+    # Header CORS dan streaming partial content (Byte-Range) untuk audio
+    <FilesMatch "\.(mp3|mp4|ogg|wav|m4a)$">
         Header set Access-Control-Allow-Origin "*"
+        Header set Accept-Ranges "bytes"
     </FilesMatch>
 </IfModule>
 
+# MIME Types untuk file audio
 AddType audio/mpeg .mp3
 AddType audio/ogg .ogg
 AddType audio/wav .wav
+AddType audio/mp4 .m4a
 
-# Bypass ModSecurity atau proteksi folder untuk file audio
-<FilesMatch "\.(mp3|mp4|ogg|wav)$">
-    Satisfy Any
-    Allow from all
+# Izin akses kompatibel untuk Apache 2.2 dan Apache 2.4 (Shared Hosting / cPanel)
+<FilesMatch "\.(mp3|mp4|ogg|wav|m4a)$">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
 </FilesMatch>
 
-<FilesMatch "\.(mp3|mp4|ogg|wav)$">
-    Header set Access-Control-Allow-Origin "*"
-    AddType audio/mpeg .mp3
-</FilesMatch>
+# Routing SPA SvelteKit
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Jangan redirect jika file atau folder fisik memang ada
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 
-# Pastikan routing SvelteKit SPA tetap jalan di paling bawah
-RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.html [L]
+    # Jangan rewrite file asset / media ke index.html agar tidak corrupt format
+    RewriteCond %{REQUEST_URI} \.(mp3|mp4|ogg|wav|m4a|png|jpg|jpeg|gif|webp|svg|css|js|woff|woff2)$ [NC]
+    RewriteRule ^ - [R=404,L]
+
+    # Fallback ke index.html untuk route SPA
+    RewriteRule . index.html [L]
+</IfModule>
