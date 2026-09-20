@@ -188,7 +188,7 @@
 
 					<Gallery images={galleryImages} theme={theme.gallery} />
 
-					<RSVP theme={theme.rsvp} />
+					<RSVP designId="bali" theme={theme.rsvp} />
 
 					<Gift {bankAccounts} theme={theme.gift} />
 				</div>

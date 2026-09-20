@@ -1,3 +1,5 @@
+import type { RowDataPacket } from 'mysql2';
+
 export interface User {
     id: number;
     username: string;
@@ -28,6 +30,16 @@ export interface Order {
     is_active: number; // tinyint(1) biasanya dibaca sebagai 0 atau 1
 }
 
-// Opsi tambahan jika kamu ingin menggunakan type RowDataPacket dari mysql2
-import type { RowDataPacket } from 'mysql2';
+export interface Guestbook {
+    id: number;
+    design_id: string;
+    name: string;
+    status: 'hadir' | 'tidak' | string;
+    message: string;
+    created_at: Date | string;
+}
+
+// Opsi type RowDataPacket dari mysql2
+export interface UserRow extends User, RowDataPacket {}
 export interface OrderRow extends Order, RowDataPacket {}
+export interface GuestbookRow extends Guestbook, RowDataPacket {}

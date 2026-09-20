@@ -14,16 +14,30 @@ npx sv create
 npx sv create my-app
 ```
 
-## Developing
+## Setup di Komputer / Laptop Baru
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Clone repositori:
+   ```sh
+   git clone <repo-url>
+   cd invitenow1
+   npm install
+   ```
 
-```sh
-npm run dev
+2. Buat file `.env` dari template:
+   ```sh
+   cp .env.example .env
+   ```
+   *Sesuaikan `DB_PORT`, `DB_USER`, dan `DB_PASSWORD` sesuai konfigurasi MySQL di laptop tersebut (misal MAMP port `8889` atau XAMPP port `3306`).*
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+3. Pastikan MySQL sudah menyala, lalu jalankan migrasi database otomatis:
+   ```sh
+   npm run db:migrate
+   ```
+
+4. Jalankan server development:
+   ```sh
+   npm run dev
+   ```
 
 ## Building
 

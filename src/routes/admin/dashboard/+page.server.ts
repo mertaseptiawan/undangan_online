@@ -12,15 +12,24 @@ export const load: PageServerLoad = async () => {
 
 // Ini untuk menangani pengiriman data (misal: update status)
 export const actions: Actions = {
+    activate: async ({ request }) => {
+        const data = await request.formData();
+        const id = data.get('id');
+
+        await db.query('UPDATE orders SET is_active = 1 WHERE id = ?', [id]);
+
+        return {
+            success: true
+        };
+    },
     updateStatus: async ({ request }) => {
         const data = await request.formData();
         const id = data.get('id');
 
-        // Contoh query update
         await db.query('UPDATE orders SET is_active = 1 WHERE id = ?', [id]);
 
         return {
-            success: true // Ini yang akan ditangkap oleh variabel `form`
+            success: true
         };
     }
 };

@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { supabase } from '$lib/supabase';
 	import { createPagination } from '$lib/stores/usePagination';
 
 	interface Props {
 		title?: string;
-		designId: string;
+		designId?: string;
 		theme?: {
 			sectionTitleColor?: string;
 			cardBg?: string;
@@ -18,7 +17,7 @@
 		};
 	}
 
-	let { title = 'Guest Book', designId, theme = {} }: Props = $props();
+	let { title = 'Guest Book', designId = 'general', theme = {} }: Props = $props();
 
 	const defaultTheme = {
 		sectionTitleColor: 'text-rose-900',
@@ -40,17 +39,15 @@
 	const pagination = createPagination([], 5);
 	const { paginatedItems, currentPage, totalPages } = pagination;
 
-	// src/lib/component/invitation/RSVP.svelte
-
 	async function fetchMessages() {
-		const { data, error } = await supabase
-			.from('guestbook')
-			.select('*')
-			.eq('design_id', designId) // Ini wajib agar tidak campur aduk
-			.order('created_at', { ascending: false });
-
-		if (!error) {
-			pagination.updateData(data || []);
+		try {
+			const res = await fetch(`/api/guestbook?designId=${encodeURIComponent(designId)}`);
+			if (res.ok) {
+				const data = await res.json();
+				pagination.updateData(data || []);
+			}
+		} catch (err) {
+			console.error('Gagal mengambil pesan buku tamu:', err);
 		}
 	}
 
@@ -58,23 +55,33 @@
 		if (!newName || !newMessage || !newStatus) return alert('Lengkapi semua data!');
 
 		loading = true;
-		const { error } = await supabase
-			.from('guestbook')
-			.insert([{ 
-				name: newName, 
-				status: newStatus, 
-				message: newMessage,
-				design_id: designId // Ini wajib agar tersimpan di kolom yang tepat
-			}]);
+		try {
+			const res = await fetch('/api/guestbook', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					name: newName,
+					status: newStatus,
+					message: newMessage,
+					design_id: designId
+				})
+			});
 
-		if (error) {
-			alert('Gagal: ' + error.message);
-		} else {
-			// Reset form dan refresh data
-			newName = ''; newStatus = ''; newMessage = '';
-			await fetchMessages();
+			const result = await res.json();
+			if (!res.ok || result.error) {
+				alert('Gagal: ' + (result.error || 'Terjadi kesalahan'));
+			} else {
+				// Reset form dan refresh data
+				newName = '';
+				newStatus = '';
+				newMessage = '';
+				await fetchMessages();
+			}
+		} catch (err: any) {
+			alert('Gagal mengirim pesan: ' + err.message);
+		} finally {
+			loading = false;
 		}
-		loading = false;
 	}
 
 	onMount(() => {
