@@ -79,7 +79,7 @@
         { id: 'Modern', name: 'Modern', image: '/image/modern/2.png' },
     ];
 
-	let { onclick } = $props<{ onclick: () => void }>();
+	let { onclick } = $props<{ onclick?: () => void }>();
 
     // States dengan Type Safety
     let selectedPackage = $state<Package | null>(null);

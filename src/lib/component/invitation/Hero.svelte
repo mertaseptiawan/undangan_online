@@ -9,6 +9,7 @@
 		theme?: {
 			titleColor?: string;
 			dateColor?: string;
+			titleFont?: string;
 		};
 		children?: Snippet; // Svelte 5 snippet support
 	}
@@ -39,7 +40,7 @@
 		<p class="mb-6 text-sm tracking-[0.5em] text-white/90 uppercase drop-shadow-md md:text-base">
 			Save The Date
 		</p>
-		<h1 class="mb-6 font-serif text-5xl leading-tight text-white drop-shadow-lg md:text-8xl">
+		<h1 class="mb-6 {finalTheme.titleFont || 'font-serif'} text-5xl leading-tight text-white drop-shadow-lg md:text-8xl">
 			{coupleNames}
 		</h1>
 

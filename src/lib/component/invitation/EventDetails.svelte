@@ -3,7 +3,7 @@
 
     interface Event {
         name: string;
-        date: string; // Tambahkan ini
+        date?: string; // Optional
         time: string;
         locationName: string;
         address: string;
@@ -51,21 +51,27 @@
                 </h2>
 
                 <div class="space-y-12">
-                    <div class="flex flex-col items-center">
-                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-800 shadow-md">
-                            <span class="material-icons-outlined">favorite_border</span> 
+                    {#if event.date}
+                        <div class="flex flex-col items-center">
+                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-800 shadow-md">
+                                <span class="material-icons-outlined">favorite_border</span> 
                             </div>
-                        <p class="text-sm font-medium uppercase tracking-widest opacity-80 {finalTheme.textColor}">Hari/Tanggal :</p>
-                        <p class="mt-1 text-xl font-semibold {finalTheme.textColor}">{event.date}</p>
-                        
-                        <!-- <a 
-                            href={event.calendarUrl || '#'} 
-                            class="mt-6 flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#5d2e17] transition-transform hover:scale-105 shadow-md"
-                        >
-                            <span class="material-icons-outlined text-lg">calendar_today</span>
-                            Simpan ke google calendar
-                        </a> -->
-                    </div>
+                            <p class="text-sm font-medium uppercase tracking-widest opacity-80 {finalTheme.textColor}">Hari/Tanggal :</p>
+                            <p class="mt-1 text-xl font-semibold {finalTheme.textColor}">{event.date}</p>
+                            
+                            {#if event.calendarUrl && event.calendarUrl !== '#'}
+                                <a 
+                                    href={event.calendarUrl} 
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    class="mt-4 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs font-bold text-[#5d2e17] transition-transform hover:scale-105 shadow-md"
+                                >
+                                    <span class="material-icons-outlined text-base">calendar_today</span>
+                                    Simpan ke Google Calendar
+                                </a>
+                            {/if}
+                        </div>
+                    {/if}
 
                     <div class="flex flex-col items-center">
                         <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-800 shadow-md">

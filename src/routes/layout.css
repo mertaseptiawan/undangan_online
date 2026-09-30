@@ -1,2 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Playwrite+NZ:wght@100..400&display=swap');
 @import 'tailwindcss';
+
+@font-face {
+    font-family: 'Jellyka Saint-Andrew Queen';
+    src: url('/fonts/Saint-Andrews Queen.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

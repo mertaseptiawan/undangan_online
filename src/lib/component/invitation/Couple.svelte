@@ -7,6 +7,8 @@
 		photo: string;
 		parents: string[];
 		address?: string; // Optional, from reference
+		childOrder?: string; // e.g. "Putra Katiga dari"
+		instagram?: string; // Optional instagram handle
 	}
 
 	interface Props {
@@ -27,13 +29,13 @@
 	let { groom, bride, theme = {}, title = 'The Couple' }: Props = $props();
 
 	const defaultTheme = {
-		sectionTitleColor: 'text-rose-900',
-		nameColor: 'text-rose-800',
-		textColor: 'text-gray-600',
-		frameColor: 'border-rose-200',
-		dividerColor: 'text-rose-300',
-		imageShape: 'rounded-full',
-		frameShape: 'rounded-full'
+		sectionTitleColor: 'text-[#D4AF37]',
+		nameColor: 'text-[#D4AF37]',
+		textColor: 'text-gray-300',
+		frameColor: 'border-[#D4AF37]/40',
+		dividerColor: 'text-[#D4AF37]',
+		imageShape: 'rounded-2xl',
+		frameShape: 'rounded-3xl'
 	};
 
 	const finalTheme = $derived({ ...defaultTheme, ...theme });
@@ -62,7 +64,7 @@
 				<h3 class="font-serif text-3xl font-semibold {finalTheme.nameColor}">{groom.name}</h3>
 				<p class="mt-2 italic {finalTheme.textColor}">{groom.fullName}</p>
 
-				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">Putra dari</p>
+				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">{groom.childOrder || 'Putra dari'}</p>
 				
 				<div class="flex flex-col items-center">
 					{#each groom.parents as parent, i}
@@ -80,6 +82,17 @@
 
 				{#if groom.address}
 					<p class="mt-2 text-sm italic {finalTheme.textColor}">{groom.address}</p>
+				{/if}
+
+				{#if groom.instagram}
+					<a
+						href="https://instagram.com/{groom.instagram.replace('@', '')}"
+						target="_blank"
+						rel="noreferrer"
+						class="mt-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-[#D4AF37] bg-white/5 hover:bg-white/10 transition-all border border-[#D4AF37]/30"
+					>
+						<span>@{groom.instagram.replace('@', '')}</span>
+					</a>
 				{/if}
 			</div>
 		</div>
@@ -106,7 +119,7 @@
 				<h3 class="font-serif text-3xl font-semibold {finalTheme.nameColor}">{bride.name}</h3>
 				<p class="mt-2 italic {finalTheme.textColor}">{bride.fullName}</p>
 
-				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">Putri dari</p>
+				<p class="mt-4 text-sm italic opacity-80 {finalTheme.textColor}">{bride.childOrder || 'Putri dari'}</p>
 				
 				<div class="flex flex-col items-center">
 					{#each bride.parents as parent, i}
@@ -124,6 +137,17 @@
 
 				{#if bride.address}
 					<p class="mt-2 text-sm italic {finalTheme.textColor}">{bride.address}</p>
+				{/if}
+
+				{#if bride.instagram}
+					<a
+						href="https://instagram.com/{bride.instagram.replace('@', '')}"
+						target="_blank"
+						rel="noreferrer"
+						class="mt-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-[#D4AF37] bg-white/5 hover:bg-white/10 transition-all border border-[#D4AF37]/30"
+					>
+						<span>@{bride.instagram.replace('@', '')}</span>
+					</a>
 				{/if}
 			</div>
 		</div>

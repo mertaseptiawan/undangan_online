@@ -4,21 +4,25 @@
 
     interface Props {
         coupleNames: string;
-        imageUrl: string;
+        imageUrl?: string;
         title?: string;
         subTitle?: string;
+        defaultRecipient?: string;
         onOpen: () => void;
         theme?: {
             textColor?: string;
             buttonColor?: string;
+            nameFont?: string;
+            titleFont?: string;
         };
     }
 
     let {
         coupleNames,
-        imageUrl,
+        imageUrl = '/image/artistic/2.png',
         title = 'The Wedding Of',
         subTitle = 'Please join us in our celebration of love',
+        defaultRecipient = 'Tamu Undangan',
         onOpen,
         theme = {}
     }: Props = $props();
@@ -30,9 +34,7 @@
         // Mengambil parameter 'to' dari URL (contoh: ?to=Budi+Sudarsono)
         const params = new URLSearchParams(window.location.search);
         const to = params.get('to');
-        if (to) {
-            guestName = to;
-        }
+        guestName = to || defaultRecipient;
     });
 
     const defaultTheme = {
@@ -67,11 +69,11 @@
         class="relative z-10 flex flex-col items-center px-6 text-center {finalTheme.textColor}"
         in:fade={{ delay: 300, duration: 800 }}
     >
-        <p class="mb-4 text-xs font-light uppercase tracking-[0.5em] opacity-80">
+        <p class="mb-4 text-xs font-light uppercase tracking-[0.5em] opacity-80 {finalTheme.titleFont || ''}">
             {title}
         </p>
         
-        <h1 class="mb-8 font-serif text-5xl md:text-8xl leading-tight">
+        <h1 class="mb-8 {finalTheme.nameFont || 'font-serif'} text-5xl md:text-8xl leading-tight">
             {coupleNames}
         </h1>
 

@@ -14,6 +14,7 @@
 			cardShape?: string;
 			inputShape?: string;
 			buttonShape?: string;
+			textColor?: string;
 		};
 	}
 
@@ -103,16 +104,16 @@
 			/>
 			<select
 				bind:value={newStatus}
-				class="w-full border p-3 {finalTheme.inputBorder} {finalTheme.inputShape} bg-white focus:ring-2 focus:outline-none"
+				class="w-full border p-3 {finalTheme.inputBorder} {finalTheme.inputShape} focus:ring-2 focus:outline-none"
 				required
 			>
-				<option value="" disabled selected>Will you attend?</option>
-				<option value="hadir">Attending</option>
-				<option value="tidak">Not Attending</option>
+				<option value="" disabled selected>Konfirmasi Kehadiran</option>
+				<option value="hadir">Hadir</option>
+				<option value="tidak">Tidak Hadir</option>
 			</select>
 			<textarea
 				bind:value={newMessage}
-				placeholder="Your Wishes"
+				placeholder="Tulis ucapan dan doa restu..."
 				rows="4"
 				class="w-full border p-3 {finalTheme.inputBorder} {finalTheme.inputShape} focus:ring-2 focus:outline-none"
 				required
@@ -121,34 +122,34 @@
 			<button
 				type="submit"
 				disabled={loading}
-				class="w-full {finalTheme.buttonColor} {finalTheme.buttonShape} cursor-pointer py-3 font-bold text-white transition-colors disabled:opacity-50"
+				class="w-full {finalTheme.buttonColor} {finalTheme.buttonShape} cursor-pointer py-3 font-bold transition-all disabled:opacity-50"
 			>
-				{loading ? 'Sending...' : 'Send Message'}
+				{loading ? 'Mengirim...' : 'Kirim Ucapan'}
 			</button>
 		</form>
 
 		<div class="custom-scrollbar max-h-125 space-y-6 overflow-y-auto pr-2">
 			{#each $paginatedItems as guest (guest.id || guest.created_at)}
-				<div class="border-b border-gray-100 pb-4 last:border-0" transition:fade>
+				<div class="border-b border-white/10 pb-4 last:border-0" transition:fade>
 					<div class="mb-1 flex items-start justify-between">
-						<h5 class="font-bold text-gray-800">{guest.name}</h5>
+						<h5 class="font-bold {finalTheme.textColor || 'text-gray-800'}">{guest.name}</h5>
 						{#if guest.status === 'hadir'}
-							<span class="rounded-full bg-green-100 px-2 py-0.5 text-xs font-normal text-green-700"
-								>Attending</span
+							<span class="rounded-full bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 text-xs font-normal text-emerald-300"
+								>Hadir</span
 							>
 						{:else}
-							<span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-normal text-gray-500"
-								>Not Attending</span
+							<span class="rounded-full bg-zinc-800/80 border border-zinc-600/40 px-2 py-0.5 text-xs font-normal text-zinc-400"
+								>Tidak Hadir</span
 							>
 						{/if}
 					</div>
-					<p class="mt-1 text-sm whitespace-pre-wrap text-gray-600">{guest.message}</p>
-					<span class="mt-1 block text-[10px] text-gray-400"
-						>{new Date(guest.created_at).toLocaleDateString()}</span
+					<p class="mt-1 text-sm whitespace-pre-wrap {finalTheme.textColor ? 'text-neutral-300' : 'text-gray-600'}">{guest.message}</p>
+					<span class="mt-1 block text-[10px] opacity-60 {finalTheme.textColor || 'text-gray-400'}"
+						>{new Date(guest.created_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span
 					>
 				</div>
 			{:else}
-				<p class="text-center text-gray-400 italic py-4">No messages yet. Be the first!</p>
+				<p class="text-center opacity-60 italic py-4 {finalTheme.textColor || 'text-gray-400'}">Belum ada ucapan. Jadilah yang pertama!</p>
 			{/each}
 		</div>
 
