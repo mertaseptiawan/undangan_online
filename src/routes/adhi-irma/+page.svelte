@@ -20,9 +20,9 @@
 
 	// 3 Foto Slideshow Portrait (Tanpa tombol, teks, titik)
 	const slideshowImages = [
-		'/image/adhi-irma/Slideshow 1.jpg',
-		'/image/adhi-irma/Slide show 2.jpg',
-		'/image/adhi-irma/Slide show 3.jpg'
+		'/image/adhi-irma/Background.jpg',
+		'/image/adhi-irma/Background 2.jpg',
+		'/image/adhi-irma/Background 3.jpg'
 	];
 	let activeSlide = $state(0);
 	let slideInterval: any;
@@ -275,15 +275,28 @@
 	</div>
 
 	<!-- Main Content dengan Nuansa Warm Dark Charcoal (Tidak Terlalu Gelap Pekat) -->
-	<main
-		class="font-times min-h-screen w-full overflow-hidden bg-[#1A1C20] text-white selection:bg-[#C9A84C] selection:text-black"
-	>
+	<main class="font-times min-h-screen w-full overflow-hidden text-white selection:text-black">
+		<div class="fixed inset-0 -z-10 overflow-hidden">
+			{#each slideshowImages as imgUrl, idx}
+				{#if activeSlide === idx}
+					<div
+						transition:fade={{ duration: 1500 }}
+						class="absolute inset-0 scale-105 bg-cover bg-center bg-no-repeat transition-transform duration-[4000ms] ease-out"
+						style="background-image: url('{imgUrl}');"
+					></div>
+				{/if}
+			{/each}
+
+			<!-- Dark Overlay agar teks & konten undangan tetap terbaca dengan jelas -->
+			<div class="absolute inset-0 bg-black/75 backdrop-blur-[2px]"></div>
+		</div>
+
 		<div transition:fade>
 			<!-- 1. Hero Section (Save The Date) - Tanpa Countdown di halaman pertama -->
 			<Hero
 				coupleNames="Adhi & Irma"
 				date="17 . 10 . 2026"
-				imageUrl="/image/adhi-irma/Cover 1.jpg"
+				imageUrl="/image/adhi-irma/Cover 2.jpg"
 				theme={theme.hero}
 			/>
 
@@ -291,7 +304,7 @@
 			<section class="relative mx-auto max-w-3xl px-6 py-20 text-center">
 				<div
 					use:reveal={{ direction: 'bottom', duration: 1000 }}
-					class="relative rounded-3xl border border-[#C9A84C]/35 bg-[#2A2D35]/90 p-8 shadow-xl backdrop-blur-md md:p-12"
+					class="relative rounded-3xl border border-[#C9A84C]/35 p-8 shadow-xl backdrop-blur-md md:p-12"
 				>
 					<!-- Divider Minimalis Emas -->
 					<div class="mb-6 flex items-center justify-center gap-3">
@@ -338,7 +351,7 @@
 				<Couple {groom} {bride} theme={theme.couple} title="Mempelai Bahagia" />
 			</div>
 
-			<!-- 4. COUNTDOWN (Diletakkan di atas Waktu & Tempat Acara sesuai request no. 1) -->
+			<!-- 4. COUNTDOWN  -->
 			<section class="px-4 py-16 text-center">
 				<div use:reveal={{ direction: 'bottom', duration: 900 }} class="mx-auto max-w-2xl">
 					<div class="mb-3 flex items-center justify-center gap-3">
@@ -463,7 +476,7 @@
 					<!-- BAB I -->
 					<div
 						use:reveal={{ direction: 'bottom', duration: 800 }}
-						class="relative rounded-3xl border border-[#C9A84C]/35 bg-[#2A2D35] p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
+						class="relative rounded-3xl border border-[#C9A84C]/35 p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
 					>
 						<div class="mb-5 flex items-center gap-3">
 							<span
@@ -488,7 +501,7 @@
 					<!-- BAB II -->
 					<div
 						use:reveal={{ direction: 'bottom', duration: 800, delay: 100 }}
-						class="relative rounded-3xl border border-[#C9A84C]/35 bg-[#2A2D35] p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
+						class="relative rounded-3xl border border-[#C9A84C]/35 p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
 					>
 						<div class="mb-5 flex items-center gap-3">
 							<span
@@ -511,7 +524,7 @@
 					<!-- BAB III -->
 					<div
 						use:reveal={{ direction: 'bottom', duration: 800, delay: 200 }}
-						class="relative rounded-3xl border border-[#C9A84C]/35 bg-[#2A2D35] p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
+						class="relative rounded-3xl border border-[#C9A84C]/35 p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
 					>
 						<div class="mb-5 flex items-center gap-3">
 							<span
@@ -534,7 +547,7 @@
 					<!-- BAB IV -->
 					<div
 						use:reveal={{ direction: 'bottom', duration: 800, delay: 300 }}
-						class="relative rounded-3xl border border-[#C9A84C]/35 bg-[#2A2D35] p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
+						class="relative rounded-3xl border border-[#C9A84C]/35 p-8 shadow-xl transition-transform hover:-translate-y-1 md:p-10"
 					>
 						<div class="mb-5 flex items-center gap-3">
 							<span
@@ -563,7 +576,7 @@
 			</section>
 
 			<!-- 9. Galeri Foto Momen Bahagia (Prewedding Casual) -->
-			<section class="border-y border-[#C9A84C]/30 bg-[#1E2028] py-20">
+			<section class="border-y border-[#C9A84C]/30 py-20">
 				<div class="mb-10 text-center">
 					<div class="mb-3 flex items-center justify-center gap-3">
 						<span class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C9A84C]"></span>
