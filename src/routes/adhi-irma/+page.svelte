@@ -216,7 +216,7 @@
 		property="og:description"
 		content="Kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia pernikahan kami. Sabtu, 17 Oktober 2026."
 	/>
-	<meta property="og:image" content="https://invitenow.id/image/adhi-irma/Cover 1.jpg" />
+	<meta property="og:image" content="https://invitenow.id/image/adhi-irma/Cover-1.jpg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:url" content="https://invitenow.id/adhi-irma" />
@@ -229,7 +229,7 @@
 		name="twitter:description"
 		content="Kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia pernikahan kami. Sabtu, 17 Oktober 2026."
 	/>
-	<meta name="twitter:image" content="https://invitenow.id/image/adhi-irma/Cover 1.jpg" />
+	<meta name="twitter:image" content="https://invitenow.id/image/adhi-irma/Cover-1.jpg" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -256,7 +256,7 @@
 		title="THE WEDDING OF"
 		subTitle="Om Swastyastu, kami mengundang Anda untuk merayakan hari bahagia pernikahan kami"
 		defaultRecipient="Tamu Undangan"
-		imageUrl="/image/adhi-irma/Cover 1.jpg"
+		imageUrl="/image/adhi-irma/Cover-1.jpg"
 		theme={theme.cover}
 	/>
 {:else}
