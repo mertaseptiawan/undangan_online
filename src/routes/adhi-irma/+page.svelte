@@ -65,7 +65,7 @@
 	function handleAudioError() {
 		if (audioElem && !audioElem.src.includes('stalaktite_cave.mp3')) {
 			console.log('Switching to atmospheric fallback audio...');
-			audioElem.src = '/music/stalaktite_cave.mp3';
+			audioElem.src = '/static/music/stalaktite_cave.mp3';
 			audioElem.load();
 		}
 	}
