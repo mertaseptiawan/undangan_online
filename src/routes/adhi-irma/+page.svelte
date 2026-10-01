@@ -16,7 +16,7 @@
 
 	let showContent = $state(false);
 	let audioElem: HTMLAudioElement | undefined = $state();
-	const myMusic = '/music/Humming-turnover.mp3';
+	const myMusic = '/static/music/Humming-turnover.mp3';
 
 	// 3 Foto Slideshow Portrait (Tanpa tombol, teks, titik)
 	const slideshowImages = [
