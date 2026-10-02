@@ -2,6 +2,16 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { createPagination } from '$lib/stores/usePagination';
+	import { db } from '$lib/firebase'; // <-- Import koneksi database Firebase
+	import {
+		collection,
+		addDoc,
+		getDocs,
+		query,
+		where,
+		orderBy,
+		serverTimestamp
+	} from 'firebase/firestore';
 
 	interface Props {
 		title?: string;
@@ -42,42 +52,51 @@
 
 	async function fetchMessages() {
 		try {
-			const res = await fetch(`/api/guestbook?designId=${encodeURIComponent(designId)}`);
-			if (res.ok) {
-				const data = await res.json();
-				pagination.updateData(data || []);
-			}
+			// Mengambil data dari Firestore berdasarkan designId
+			const q = query(
+				collection(db, 'guestbooks'),
+				where('design_id', '==', designId),
+				orderBy('created_at', 'desc')
+			);
+
+			const querySnapshot = await getDocs(q);
+			const messages: any[] = [];
+			querySnapshot.forEach((doc) => {
+				const data = doc.data();
+				messages.push({
+					id: doc.id,
+					...data,
+					// Ubah timestamp Firestore ke format Date JavaScript
+					created_at: data.created_at ? data.created_at.toDate() : new Date()
+				});
+			});
+
+			pagination.updateData(messages);
 		} catch (err) {
-			console.error('Gagal mengambil pesan buku tamu:', err);
+			console.error('Gagal mengambil pesan buku tamu dari Firebase:', err);
 		}
 	}
 
-	async function handleSubmit() {
+	async function handleSubmit(event: Event) {
+		event.preventDefault(); // Mencegah halaman reload atau melompat ke atas
+
 		if (!newName || !newMessage || !newStatus) return alert('Lengkapi semua data!');
 
 		loading = true;
 		try {
-			const res = await fetch('/api/guestbook', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					name: newName,
-					status: newStatus,
-					message: newMessage,
-					design_id: designId
-				})
+			await addDoc(collection(db, 'guestbooks'), {
+				name: newName,
+				status: newStatus,
+				message: newMessage,
+				design_id: designId,
+				created_at: serverTimestamp()
 			});
 
-			const result = await res.json();
-			if (!res.ok || result.error) {
-				alert('Gagal: ' + (result.error || 'Terjadi kesalahan'));
-			} else {
-				// Reset form dan refresh data
-				newName = '';
-				newStatus = '';
-				newMessage = '';
-				await fetchMessages();
-			}
+			// Reset form dan refresh data
+			newName = '';
+			newStatus = '';
+			newMessage = '';
+			await fetchMessages();
 		} catch (err: any) {
 			alert('Gagal mengirim pesan: ' + err.message);
 		} finally {
@@ -134,22 +153,36 @@
 					<div class="mb-1 flex items-start justify-between">
 						<h5 class="font-bold {finalTheme.textColor || 'text-gray-800'}">{guest.name}</h5>
 						{#if guest.status === 'hadir'}
-							<span class="rounded-full bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 text-xs font-normal text-emerald-300"
+							<span
+								class="rounded-full border border-emerald-500/40 bg-emerald-950/60 px-2 py-0.5 text-xs font-normal text-emerald-300"
 								>Hadir</span
 							>
 						{:else}
-							<span class="rounded-full bg-zinc-800/80 border border-zinc-600/40 px-2 py-0.5 text-xs font-normal text-zinc-400"
+							<span
+								class="rounded-full border border-zinc-600/40 bg-zinc-800/80 px-2 py-0.5 text-xs font-normal text-zinc-400"
 								>Tidak Hadir</span
 							>
 						{/if}
 					</div>
-					<p class="mt-1 text-sm whitespace-pre-wrap {finalTheme.textColor ? 'text-neutral-300' : 'text-gray-600'}">{guest.message}</p>
+					<p
+						class="mt-1 text-sm whitespace-pre-wrap {finalTheme.textColor
+							? 'text-neutral-300'
+							: 'text-gray-600'}"
+					>
+						{guest.message}
+					</p>
 					<span class="mt-1 block text-[10px] opacity-60 {finalTheme.textColor || 'text-gray-400'}"
-						>{new Date(guest.created_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span
+						>{new Date(guest.created_at).toLocaleDateString('id-ID', {
+							year: 'numeric',
+							month: 'short',
+							day: 'numeric'
+						})}</span
 					>
 				</div>
 			{:else}
-				<p class="text-center opacity-60 italic py-4 {finalTheme.textColor || 'text-gray-400'}">Belum ada ucapan. Jadilah yang pertama!</p>
+				<p class="text-center opacity-60 italic py-4 {finalTheme.textColor || 'text-gray-400'}">
+					Belum ada ucapan. Jadilah yang pertama!
+				</p>
 			{/each}
 		</div>
 

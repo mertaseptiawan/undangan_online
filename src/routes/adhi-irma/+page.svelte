@@ -48,13 +48,12 @@
 	});
 
 	async function openCover() {
-		const audio = document.getElementById('weddingAudio') as HTMLAudioElement;
-		if (audio) {
+		if (audioElem) {
 			try {
-				audio.volume = 0.5;
-				await audio.play();
+				audioElem.volume = 0.5;
+				await audioElem.play();
 				$isPlaying = true;
-				audioStore.set(audio);
+				audioStore.set(audioElem);
 			} catch (err) {
 				console.warn('Autoplay audio fallback:', err);
 			}
@@ -242,7 +241,7 @@
 <audio
 	id="weddingAudio"
 	bind:this={audioElem}
-	src={myMusic}
+	src="/music/Humming-turnover.mp3"
 	loop
 	preload="auto"
 	onerror={handleAudioError}
