@@ -89,7 +89,7 @@
 		photo: '/image/adhi-irma/Mempelai Wanita.jpg',
 		childOrder: 'Putri Ketiga dari',
 		parents: ['Alm. I Wayan Sanggra', 'Alm. Ni Ketut Sari, S.pd'],
-		address: 'Sebatu, Tegallalang, Gianyar'
+		address: 'Br. Bayad, Kedisan, Tegallalang, Gianyar'
 	};
 
 	// Rangkaian Acara (Waktu & Tempat)
@@ -300,48 +300,50 @@
 				theme={theme.hero}
 			/>
 
-			<!-- 2. Doa & Salam Pembuka (Om Swastyastu, RG Veda) -->
-			<section class="relative mx-auto max-w-3xl px-6 py-20 text-center">
+			<!-- 7. KATA KUTIPAN (Ditaruh SETELAH waktu dan tempat acara & di bawah slideshow) -->
+			<section class="px-6 py-12">
 				<div
-					use:reveal={{ direction: 'bottom', duration: 1000 }}
-					class="relative rounded-3xl border border-[#C9A84C]/35 p-8 shadow-xl backdrop-blur-md md:p-12"
+					use:reveal={{ direction: 'bottom', duration: 900 }}
+					class="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-[#C9A84C]/40 p-8 text-center text-white shadow-xl md:p-14"
 				>
-					<!-- Divider Minimalis Emas -->
-					<div class="mb-6 flex items-center justify-center gap-3">
-						<span class="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#C9A84C]"></span>
-						<span class="font-serif text-lg text-[#C9A84C]">✧</span>
-						<span class="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#C9A84C]"></span>
-					</div>
-
-					<h3
-						class="mb-4 font-sans text-xs font-semibold tracking-[0.4em] text-[#C9A84C] uppercase"
-					>
-						Om Swastyastu
-					</h3>
-
-					<p class="font-times mb-4 text-xl leading-relaxed text-[#E2D9C8] italic md:text-2xl">
-						"Ihaiva stam ma vi yaustam, visvam ayur vyasnutam, kridantau putrair naptrbhih,
-						modamanau sve grhe."
-					</p>
-
-					<p class="mb-6 font-sans text-xs font-bold tracking-widest text-[#C9A84C] uppercase">
-						(RG VEDA X.85.42)
-					</p>
-
-					<p
-						class="font-times mx-auto max-w-xl text-base leading-relaxed text-neutral-200 md:text-lg"
-					>
-						Wahai pasangan suami-istri, semoga kalian tetap bersatu dan tidak pernah terpisahkan.
-						Semoga kalian mencapai hidup penuh kebahagiaan dengan keturunan di rumah tangga yang
-						penuh kedamaian.
-					</p>
-
+					<!-- Subtle ambient warm glow -->
 					<div
-						class="font-times mt-8 border-t border-[#C9A84C]/25 pt-6 text-sm leading-relaxed text-neutral-300 md:text-base"
-					>
-						Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa / Tuhan Yang Maha Esa,
-						perkenankanlah kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri Upacara Manusa
-						Yadnya (Pawiwahan) putra dan putri kami:
+						class="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[#C9A84C]/15 blur-3xl"
+					></div>
+					<div
+						class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-[#C9A84C]/10 blur-3xl"
+					></div>
+
+					<div class="relative z-10">
+						<div class="mx-auto mb-6 flex items-center justify-center gap-3 text-[#E2D9C8]/70">
+							<span class="h-[1px] w-14 bg-gradient-to-r from-transparent to-[#C9A84C]"></span>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5 text-[#C9A84C]"
+								fill="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+								/>
+							</svg>
+							<span class="h-[1px] w-14 bg-gradient-to-l from-transparent to-[#C9A84C]"></span>
+						</div>
+
+						<blockquote
+							class="font-times text-xl leading-relaxed text-[#EEE8DA] italic drop-shadow-md md:text-3xl"
+						>
+							“We can live like Jack and Sally if we want,<br />
+							where you can always find me.<br />
+							And we'll have Halloween on Christmas,<br />
+							and in the night we'll wish this never ends.”
+						</blockquote>
+
+						<cite
+							class="mt-8 block font-sans text-xs font-semibold tracking-[0.35em] text-[#C9A84C] uppercase"
+						>
+							— Blink 182
+						</cite>
 					</div>
 				</div>
 			</section>
@@ -407,54 +409,6 @@
 							</div>
 						{/if}
 					{/each}
-				</div>
-			</section>
-
-			<!-- 7. KATA KUTIPAN (Ditaruh SETELAH waktu dan tempat acara & di bawah slideshow) -->
-			<section class="px-6 py-12">
-				<div
-					use:reveal={{ direction: 'bottom', duration: 900 }}
-					class="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-[#C9A84C]/40 bg-[#272A32] p-8 text-center text-white shadow-xl md:p-14"
-				>
-					<!-- Subtle ambient warm glow -->
-					<div
-						class="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[#C9A84C]/15 blur-3xl"
-					></div>
-					<div
-						class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-[#C9A84C]/10 blur-3xl"
-					></div>
-
-					<div class="relative z-10">
-						<div class="mx-auto mb-6 flex items-center justify-center gap-3 text-[#E2D9C8]/70">
-							<span class="h-[1px] w-14 bg-gradient-to-r from-transparent to-[#C9A84C]"></span>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-5 w-5 text-[#C9A84C]"
-								fill="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-								/>
-							</svg>
-							<span class="h-[1px] w-14 bg-gradient-to-l from-transparent to-[#C9A84C]"></span>
-						</div>
-
-						<blockquote
-							class="font-times text-xl leading-relaxed text-[#EEE8DA] italic drop-shadow-md md:text-3xl"
-						>
-							“We can live like Jack and Sally if we want,<br />
-							where you can always find me.<br />
-							And we'll have Halloween on Christmas,<br />
-							and in the night we'll wish this never ends.”
-						</blockquote>
-
-						<cite
-							class="mt-8 block font-sans text-xs font-semibold tracking-[0.35em] text-[#C9A84C] uppercase"
-						>
-							— Blink 182
-						</cite>
-					</div>
 				</div>
 			</section>
 
@@ -537,7 +491,7 @@
 							>
 						</div>
 						<p class="font-script text-lg leading-relaxed text-neutral-200 md:text-xl">
-							Setelah hari itu berlalu, entah bagaimana komunikasi kita menjadi berlanjut, dan
+							Setelah hari itu berlalu, entah bagaimana komunikasi kami menjadi berlanjut, dan
 							banyak hal yang kami lalui bersama. Entah kenapa dari semua ketidak sempurnaan yang
 							kami miliki, kami merasa memiliki banyak kesamaan seperti bercermin di air yang
 							jernih.
