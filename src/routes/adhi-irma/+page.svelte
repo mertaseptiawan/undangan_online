@@ -16,7 +16,7 @@
 
 	let showContent = $state(false);
 	let audioElem: HTMLAudioElement | undefined = $state();
-	const myMusic = '/static/music/Humming-turnover.mp3';
+	const myMusic = '/music/Humming-turnover.mp3';
 
 	// 3 Foto Slideshow Portrait (Tanpa tombol, teks, titik)
 	const slideshowImages = [
@@ -65,7 +65,7 @@
 	function handleAudioError() {
 		if (audioElem && !audioElem.src.includes('Humming-turnover.mp3')) {
 			console.log('Switching to atmospheric fallback audio...');
-			audioElem.src = '/static/music/Humming-turnover.mp3';
+			audioElem.src = '/music/Humming-turnover.mp3';
 			audioElem.load();
 		}
 	}
