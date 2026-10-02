@@ -63,9 +63,9 @@
 	}
 
 	function handleAudioError() {
-		if (audioElem && !audioElem.src.includes('stalaktite_cave.mp3')) {
+		if (audioElem && !audioElem.src.includes('Humming-turnover.mp3')) {
 			console.log('Switching to atmospheric fallback audio...');
-			audioElem.src = '/static/music/stalaktite_cave.mp3';
+			audioElem.src = '/static/music/Humming-turnover.mp3';
 			audioElem.load();
 		}
 	}
