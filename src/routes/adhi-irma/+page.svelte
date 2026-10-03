@@ -76,7 +76,7 @@
 		name: 'Adhi',
 		fullName: 'I Nyoman Adhi Dharma Susila',
 		photo: '/image/adhi-irma/Mempelai Pria.jpg',
-		childOrder: 'Putra Katiga dari',
+		childOrder: 'Putra Ketiga dari',
 		parents: ['I Wayan Suardila', 'Ni Wayan Suparini'],
 		address: 'Br. Pujung kaja, Sebatu, Tegallalang, Gianyar'
 	};
@@ -215,7 +215,7 @@
 		property="og:description"
 		content="Kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia pernikahan kami. Sabtu, 17 Oktober 2026."
 	/>
-	<meta property="og:image" content="https://invitenow.id/image/adhi-irma/Cover-1.jpg?v=2" />
+	<meta property="og:image" content="https://invitenow.id/image/logo1.jpeg?v=2" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:url" content="https://invitenow.id/adhi-irma" />
@@ -228,7 +228,7 @@
 		name="twitter:description"
 		content="Kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia pernikahan kami. Sabtu, 17 Oktober 2026."
 	/>
-	<meta name="twitter:image" content="https://invitenow.id/image/adhi-irma/Cover-1.jpg?v=2" />
+	<meta name="twitter:image" content="https://invitenow.id/image/logo1.jpeg?v=2" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
